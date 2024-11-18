@@ -1,0 +1,6 @@
+@Explore_ease_HostAddress = http://localhost:5208
+
+GET {{Explore_ease_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
