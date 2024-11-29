@@ -12,11 +12,11 @@ namespace Explore_ease.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersomController : ControllerBase
+    public class PersonController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public PersomController(AppDbContext context)
+        public PersonController(AppDbContext context)
         {
             _context = context;
         }
