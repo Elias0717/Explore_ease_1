@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Explore_ease.Context;
 using Explore_ease.Models;
+using ExploreEase.Context;
 
 namespace Explore_ease.Controllers
 {
@@ -14,9 +14,9 @@ namespace Explore_ease.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ExploreEaseContext _context;
 
-        public PersonController(AppDbContext context)
+        public PersonController(ExploreEaseContext context)
         {
             _context = context;
         }
@@ -25,14 +25,14 @@ namespace Explore_ease.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Person>>> GetPersons()
         {
-            return await _context.Persons.ToListAsync();
+            return await _context.Person.ToListAsync();
         }
 
         // GET: api/Persom/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            var person = await _context.Persons.FindAsync(id);
+            var person = await _context.Person.FindAsync(id);
 
             if (person == null)
             {
@@ -78,7 +78,7 @@ namespace Explore_ease.Controllers
         [HttpPost]
         public async Task<ActionResult<Person>> PostPerson(Person person)
         {
-            _context.Persons.Add(person);
+            _context.Person.Add(person);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPerson", new { id = person.id }, person);
@@ -88,13 +88,13 @@ namespace Explore_ease.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(int id)
         {
-            var person = await _context.Persons.FindAsync(id);
+            var person = await _context.Person.FindAsync(id);
             if (person == null)
             {
                 return NotFound();
             }
 
-            _context.Persons.Remove(person);
+            _context.Person.Remove(person);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace Explore_ease.Controllers
 
         private bool PersonExists(int id)
         {
-            return _context.Persons.Any(e => e.id == id);
+            return _context.Person.Any(e => e.id == id);
         }
     }
 }

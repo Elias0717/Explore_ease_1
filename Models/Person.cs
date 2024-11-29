@@ -8,5 +8,6 @@
         public string Club { get; set; }
         public string Nacionalidad { get; set; }
         public int Edad { get; set;}
-    }
+        public string Correo { get; set; }
+	}
 }

@@ -1,4 +1,4 @@
-﻿using Explore_ease.Context;
+﻿using ExploreEase.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Explore_ease.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(ExploreEaseContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
